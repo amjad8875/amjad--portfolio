@@ -369,8 +369,7 @@
           "caption": "جدول الموضوعات والأطباء والفروع",
           "type": "image"
         }
-      ],
-      "download": "محتوى الانستقرام,تويتر لشهر يناير(تم الاسترداد تلقائياً).xlsx"
+      ]
     },
     jewelryAds: {
       "title": "الحملات التسويقية — المجوهرات",
@@ -402,7 +401,6 @@
   const thumbs = document.getElementById('gallery-thumbs');
   const prev = document.getElementById('gallery-prev');
   const next = document.getElementById('gallery-next');
-  const download = document.getElementById('gallery-download');
   let currentProject, position = 0, lastTrigger, pointerStart;
 
   function stopVideos() { document.querySelectorAll('video').forEach(v => v.pause()); }
@@ -440,8 +438,6 @@
       if(item.type === 'video') {const mark = document.createElement('span'); mark.className = 'thumb-video'; mark.textContent = 'فيديو'; b.append(mark);}
       b.addEventListener('click',() => {position=i;display();}); thumbs.append(b);
     });
-    download.hidden = !currentProject.download;
-    if(currentProject.download) download.href = asset(currentProject.download); else download.removeAttribute('href');
     document.body.classList.add('gallery-open'); dialog.showModal(); display(); dialog.querySelector('.gallery-close').focus();
   }
   document.querySelectorAll('[data-gallery]').forEach(b => b.addEventListener('click',() => openProject(b.dataset.gallery,Number(b.dataset.start||0),b)));

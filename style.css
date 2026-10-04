@@ -370,10 +370,10 @@ button:focus-visible,a:focus-visible {
   min-width: 96px;
   min-height: 44px;
   padding: 10px 16px;
-  border: 1px solid #6a102629;
+  border: 1px solid var(--ink);
   border-radius: 2px;
-  background: #fff;
-  color: var(--plum);
+  background: var(--ink);
+  color: var(--cream);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
@@ -387,8 +387,8 @@ button:focus-visible,a:focus-visible {
 }
 
 .more-link svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -397,9 +397,9 @@ button:focus-visible,a:focus-visible {
 }
 
 .more-link:hover {
-  background: #6a102608;
-  border-color: #6a10264d;
-  color: var(--plum)
+  background: var(--plum);
+  border-color: var(--plum);
+  color: var(--cream)
 }
 
 .media-card {
@@ -722,7 +722,7 @@ button:focus-visible,a:focus-visible {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   min-height: 68px;
   padding: 0 2px 14px;
   font-size: 16px;
@@ -794,8 +794,13 @@ button:focus-visible,a:focus-visible {
 
 .vera-phase-name {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  min-height: 26px;
   gap: 9px
+}
+
+.vera-phase-name>:not(.vera-stage-number) {
+  line-height: 26px
 }
 
 .vera-stage-number {
@@ -1272,17 +1277,6 @@ dialog::backdrop {
   font-size: 11px
 }
 
-.gallery-download {
-  display: inline-block;
-  margin-top: 13px;
-  font-size: 14px;
-  border-bottom: 1px solid var(--accent)
-}
-
-.gallery-download[hidden] {
-  display: none
-}
-
 .media-error {
   padding: 24px;
   text-align: center
@@ -1453,12 +1447,12 @@ body.gallery-open .floating-whatsapp {
   .section-flow {
     display: grid;
     right: calc(var(--flow-rail) - var(--flow-gutter) - 22px);
-    top: 2px;
+    top: 0;
     bottom: auto
   }
 
   .section-flow.with-sector {
-    top: 34px
+    top: 32px
   }
 
   .section-flow::before {
@@ -1532,7 +1526,7 @@ body.gallery-open .floating-whatsapp {
     display: grid;
     grid-template-columns: minmax(0,1fr) auto;
     align-items: start;
-    gap: 12px 14px;
+    gap: 12px 10px;
     min-height: 0;
     margin-bottom: 22px;
     padding: 0 0 16px
@@ -1549,10 +1543,12 @@ body.gallery-open .floating-whatsapp {
     grid-row: 1;
     justify-self: start;
     max-width: 100%;
-    padding: 7px 14px;
-    font-size: 20px;
+    padding: 7px 12px;
+    font-size: 18px;
     line-height: 1.5;
-    text-wrap: balance
+    text-wrap: wrap;
+    overflow-wrap: normal;
+    word-break: normal
   }
 
   .project-heading>.more-link {
@@ -1560,16 +1556,41 @@ body.gallery-open .floating-whatsapp {
     grid-row: 1;
     align-self: start;
     justify-self: end;
-    min-width: 76px;
-    min-height: 44px;
-    padding: 8px 10px;
-    gap: 6px;
-    font-size: 13px
+    margin-top: 3px
+  }
+
+  .heading-phrase {
+    white-space: nowrap
+  }
+
+  .more-link {
+    position: relative;
+    min-width: 56px;
+    min-height: 30px;
+    padding: 4px;
+    gap: 4px;
+    border-color: #6a102629;
+    background: #fff;
+    color: var(--plum);
+    font-size: 12px
+  }
+
+  /* A smaller visible rectangle retains a 44px touch target. */
+  .more-link::after {
+    content: '';
+    position: absolute;
+    inset: -7px 0
+  }
+
+  .more-link:hover {
+    background: #6a102608;
+    border-color: #6a10264d;
+    color: var(--plum)
   }
 
   .more-link svg {
-    width: 14px;
-    height: 14px
+    width: 12px;
+    height: 12px
   }
 
   .project-heading:not(:has(>.more-link)) h2 {
@@ -1703,7 +1724,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .single-project .project-heading h2 {
-    font-size: 20px;
+    font-size: 18px;
     max-width: 100%
   }
 
@@ -1772,8 +1793,16 @@ body.gallery-open .floating-whatsapp {
     display: none
   }
 
-  .project-heading h2 {
-    padding: 7px 12px;
+  .section-flow {
+    top: -3px
+  }
+
+  .section-flow.with-sector {
+    top: 30px
+  }
+
+  .project-heading h2,.single-project .project-heading h2 {
+    padding: 6px 8px;
     border-radius: 25px
   }
 
@@ -1825,12 +1854,14 @@ body.gallery-open .floating-whatsapp {
   .sector-heading {
     display: grid;
     grid-template-columns: minmax(0,1fr) auto;
-    gap: 14px;
+    gap: 8px;
     margin-bottom: 22px
   }
 
   .sector-heading h3 {
-    font-size: 18px
+    font-size: 16px;
+    text-wrap: wrap;
+    overflow-wrap: normal
   }
 
   .sector-group+.sector-group {
@@ -1893,23 +1924,18 @@ body.gallery-open .floating-whatsapp {
   }
 
   .project-heading {
-    gap: 12px 14px;
+    gap: 12px 8px;
     margin-bottom: 22px;
     padding-bottom: 16px
   }
 
   .project-heading h2,.single-project .project-heading h2 {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5
   }
 
-  .more-link {
-    font-size: 13px;
-    min-width: 76px
-  }
-
   .single-project .project-heading {
-    gap: 12px 14px;
+    gap: 12px 8px;
     align-items: start
   }
 
@@ -2188,7 +2214,7 @@ body.gallery-open .floating-whatsapp {
 
 @media(max-width:380px) {
   .project-heading h2,.single-project .project-heading h2 {
-    font-size: 17px
+    font-size: 16px
   }
 
   .account-grid .media-frame {

@@ -379,10 +379,10 @@ button:focus-visible,a:focus-visible {
   min-width: 96px;
   min-height: 44px;
   padding: 10px 16px;
-  border: 1px solid #6a102629;
+  border: 1px solid var(--ink);
   border-radius: 2px;
-  background: #fff;
-  color: var(--plum);
+  background: var(--ink);
+  color: var(--cream);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
@@ -396,8 +396,8 @@ button:focus-visible,a:focus-visible {
 }
 
 .more-link svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -406,9 +406,9 @@ button:focus-visible,a:focus-visible {
 }
 
 .more-link:hover {
-  background: #6a102608;
-  border-color: #6a10264d;
-  color: var(--plum)
+  background: var(--plum);
+  border-color: var(--plum);
+  color: var(--cream)
 }
 
 .media-card {
@@ -731,7 +731,7 @@ button:focus-visible,a:focus-visible {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   min-height: 68px;
   padding: 0 2px 14px;
   font-size: 16px;
@@ -803,8 +803,13 @@ button:focus-visible,a:focus-visible {
 
 .vera-phase-name {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  min-height: 26px;
   gap: 9px
+}
+
+.vera-phase-name>:not(.vera-stage-number) {
+  line-height: 26px
 }
 
 .vera-stage-number {
@@ -1281,17 +1286,6 @@ dialog::backdrop {
   font-size: 11px
 }
 
-.gallery-download {
-  display: inline-block;
-  margin-top: 13px;
-  font-size: 14px;
-  border-bottom: 1px solid var(--accent)
-}
-
-.gallery-download[hidden] {
-  display: none
-}
-
 .media-error {
   padding: 24px;
   text-align: center
@@ -1462,12 +1456,12 @@ body.gallery-open .floating-whatsapp {
   .section-flow {
     display: grid;
     right: calc(var(--flow-rail) - var(--flow-gutter) - 22px);
-    top: 2px;
+    top: 0;
     bottom: auto
   }
 
   .section-flow.with-sector {
-    top: 34px
+    top: 32px
   }
 
   .section-flow::before {
@@ -1541,7 +1535,7 @@ body.gallery-open .floating-whatsapp {
     display: grid;
     grid-template-columns: minmax(0,1fr) auto;
     align-items: start;
-    gap: 12px 14px;
+    gap: 12px 10px;
     min-height: 0;
     margin-bottom: 22px;
     padding: 0 0 16px
@@ -1558,10 +1552,12 @@ body.gallery-open .floating-whatsapp {
     grid-row: 1;
     justify-self: start;
     max-width: 100%;
-    padding: 7px 14px;
-    font-size: 20px;
+    padding: 7px 12px;
+    font-size: 18px;
     line-height: 1.5;
-    text-wrap: balance
+    text-wrap: wrap;
+    overflow-wrap: normal;
+    word-break: normal
   }
 
   .project-heading>.more-link {
@@ -1569,16 +1565,41 @@ body.gallery-open .floating-whatsapp {
     grid-row: 1;
     align-self: start;
     justify-self: end;
-    min-width: 76px;
-    min-height: 44px;
-    padding: 8px 10px;
-    gap: 6px;
-    font-size: 13px
+    margin-top: 3px
+  }
+
+  .heading-phrase {
+    white-space: nowrap
+  }
+
+  .more-link {
+    position: relative;
+    min-width: 56px;
+    min-height: 30px;
+    padding: 4px;
+    gap: 4px;
+    border-color: #6a102629;
+    background: #fff;
+    color: var(--plum);
+    font-size: 12px
+  }
+
+  /* A smaller visible rectangle retains a 44px touch target. */
+  .more-link::after {
+    content: '';
+    position: absolute;
+    inset: -7px 0
+  }
+
+  .more-link:hover {
+    background: #6a102608;
+    border-color: #6a10264d;
+    color: var(--plum)
   }
 
   .more-link svg {
-    width: 14px;
-    height: 14px
+    width: 12px;
+    height: 12px
   }
 
   .project-heading:not(:has(>.more-link)) h2 {
@@ -1712,7 +1733,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .single-project .project-heading h2 {
-    font-size: 20px;
+    font-size: 18px;
     max-width: 100%
   }
 
@@ -1781,8 +1802,16 @@ body.gallery-open .floating-whatsapp {
     display: none
   }
 
-  .project-heading h2 {
-    padding: 7px 12px;
+  .section-flow {
+    top: -3px
+  }
+
+  .section-flow.with-sector {
+    top: 30px
+  }
+
+  .project-heading h2,.single-project .project-heading h2 {
+    padding: 6px 8px;
     border-radius: 25px
   }
 
@@ -1834,12 +1863,14 @@ body.gallery-open .floating-whatsapp {
   .sector-heading {
     display: grid;
     grid-template-columns: minmax(0,1fr) auto;
-    gap: 14px;
+    gap: 8px;
     margin-bottom: 22px
   }
 
   .sector-heading h3 {
-    font-size: 18px
+    font-size: 16px;
+    text-wrap: wrap;
+    overflow-wrap: normal
   }
 
   .sector-group+.sector-group {
@@ -1902,23 +1933,18 @@ body.gallery-open .floating-whatsapp {
   }
 
   .project-heading {
-    gap: 12px 14px;
+    gap: 12px 8px;
     margin-bottom: 22px;
     padding-bottom: 16px
   }
 
   .project-heading h2,.single-project .project-heading h2 {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5
   }
 
-  .more-link {
-    font-size: 13px;
-    min-width: 76px
-  }
-
   .single-project .project-heading {
-    gap: 12px 14px;
+    gap: 12px 8px;
     align-items: start
   }
 
@@ -2197,7 +2223,7 @@ body.gallery-open .floating-whatsapp {
 
 @media(max-width:380px) {
   .project-heading h2,.single-project .project-heading h2 {
-    font-size: 17px
+    font-size: 16px
   }
 
   .account-grid .media-frame {
@@ -2413,7 +2439,7 @@ body.gallery-open .floating-whatsapp {
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
 <p class="sector-label">العيادات والجماليات</p>
-<h2 id="title-social">إدارة الحسابات على وسائل التواصل</h2>
+<h2 id="title-social">إدارة الحسابات <span class="heading-phrase">على وسائل التواصل</span></h2>
 <p class="section-description">تنسيق محتوى العيادات والجماليات ومتابعة حضورها على المنصات.</p>
 </div>
 <button class="more-link" type="button" data-gallery="social" data-start="2" aria-label="المزيد من إدارة حسابات العيادات والجماليات"><span>المزيد</span>
@@ -2604,7 +2630,7 @@ body.gallery-open .floating-whatsapp {
 <div class="heading-copy"><a class="section-flow" href="#contact" aria-label="الانتقال إلى ختام معرض الأعمال">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
-<h2 id="title-presence">خطة المحتوى ورفع السمعة الرقمية</h2>
+<h2 id="title-presence">خطة المحتوى <span class="heading-phrase">ورفع السمعة الرقمية</span></h2>
 <p class="section-description">تخطيط المحتوى ومتابعة تقييمات الفروع وحضورها الرقمي.</p>
 </div>
 <button class="more-link" type="button" data-gallery="presence" data-start="1" aria-label="المزيد من خطة المحتوى ورفع السمعة الرقمية"><span>المزيد</span>
@@ -2669,7 +2695,7 @@ body.gallery-open .floating-whatsapp {
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
 </svg>
 </button>
-</div><a id="gallery-download" class="gallery-download" hidden download>تحميل خطة يناير</a>
+</div>
 </div>
 </dialog>
 <script>
@@ -3044,8 +3070,7 @@ body.gallery-open .floating-whatsapp {
           "caption": "جدول الموضوعات والأطباء والفروع",
           "type": "image"
         }
-      ],
-      "download": "محتوى الانستقرام,تويتر لشهر يناير(تم الاسترداد تلقائياً).xlsx"
+      ]
     },
     jewelryAds: {
       "title": "الحملات التسويقية — المجوهرات",
@@ -3077,7 +3102,6 @@ body.gallery-open .floating-whatsapp {
   const thumbs = document.getElementById('gallery-thumbs');
   const prev = document.getElementById('gallery-prev');
   const next = document.getElementById('gallery-next');
-  const download = document.getElementById('gallery-download');
   let currentProject, position = 0, lastTrigger, pointerStart;
 
   function stopVideos() { document.querySelectorAll('video').forEach(v => v.pause()); }
@@ -3115,8 +3139,6 @@ body.gallery-open .floating-whatsapp {
       if(item.type === 'video') {const mark = document.createElement('span'); mark.className = 'thumb-video'; mark.textContent = 'فيديو'; b.append(mark);}
       b.addEventListener('click',() => {position=i;display();}); thumbs.append(b);
     });
-    download.hidden = !currentProject.download;
-    if(currentProject.download) download.href = asset(currentProject.download); else download.removeAttribute('href');
     document.body.classList.add('gallery-open'); dialog.showModal(); display(); dialog.querySelector('.gallery-close').focus();
   }
   document.querySelectorAll('[data-gallery]').forEach(b => b.addEventListener('click',() => openProject(b.dataset.gallery,Number(b.dataset.start||0),b)));
@@ -3157,7 +3179,6 @@ body.gallery-open .floating-whatsapp {
   }
 
 })();
-
 </script>
 </body>
 </html>
