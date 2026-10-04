@@ -1416,6 +1416,27 @@ body.gallery-open .floating-whatsapp {
 }
 
 @media(max-width:780px) {
+  .site-header {
+    border-top: 0;
+    border-bottom-color: #e2dfe6;
+    background: #fff;
+    box-shadow: none
+  }
+
+  .nav-contact {
+    border-bottom-color: #6a10264d
+  }
+
+  .floating-whatsapp {
+    background: var(--plum);
+    box-shadow: 0 5px 18px #6a102628,0 0 0 3px #ffffffeb
+  }
+
+  .floating-whatsapp:hover {
+    background: var(--plum);
+    box-shadow: 0 6px 20px #6a102635,0 0 0 3px #ffffffeb
+  }
+
   .hero {
     min-height: 0;
     margin-top: 8px;
@@ -1424,7 +1445,8 @@ body.gallery-open .floating-whatsapp {
   }
 
   .hero h1 {
-    font-size: 30px
+    font-size: 31px;
+    color: var(--ink)
   }
 
   .hero-role {
@@ -1529,7 +1551,8 @@ body.gallery-open .floating-whatsapp {
     gap: 12px 10px;
     min-height: 0;
     margin-bottom: 22px;
-    padding: 0 0 16px
+    padding: 0 0 16px;
+    border-bottom-color: #e2dfe6
   }
 
   /* Keep the title and action together, with the description across both columns. */
@@ -1544,7 +1567,7 @@ body.gallery-open .floating-whatsapp {
     justify-self: start;
     max-width: 100%;
     padding: 7px 12px;
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.5;
     text-wrap: wrap;
     overflow-wrap: normal;
@@ -1724,7 +1747,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .single-project .project-heading h2 {
-    font-size: 18px;
+    font-size: 19px;
     max-width: 100%
   }
 
@@ -1741,12 +1764,12 @@ body.gallery-open .floating-whatsapp {
   }
 
   .site-footer {
-    margin-top: 56px;
-    padding-top: 36px
+    margin-top: 40px;
+    padding-top: 28px
   }
 
   .footer-invitation h2 {
-    font-size: 27px
+    font-size: 25px
   }
 
 }
@@ -1755,8 +1778,9 @@ body.gallery-open .floating-whatsapp {
   .hero {
     min-height: 0;
     margin-top: 6px;
-    margin-bottom: 18px;
-    padding: 12px 0
+    margin-bottom: 22px;
+    padding: 14px 0;
+    border-bottom: 0
   }
 
   .hero-copy {
@@ -1764,7 +1788,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .hero h1 {
-    font-size: 27px
+    font-size: 29px
   }
 
   .hero-role {
@@ -1781,7 +1805,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .page-ambience {
-    opacity: .65
+    opacity: .45
   }
 
   .ambient-orbit,.ambient-glow {
@@ -1794,11 +1818,11 @@ body.gallery-open .floating-whatsapp {
   }
 
   .section-flow {
-    top: -3px
+    top: -2px
   }
 
   .section-flow.with-sector {
-    top: 30px
+    top: 31px
   }
 
   .project-heading h2,.single-project .project-heading h2 {
@@ -1859,7 +1883,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .sector-heading h3 {
-    font-size: 16px;
+    font-size: 17px;
     text-wrap: wrap;
     overflow-wrap: normal
   }
@@ -1901,14 +1925,14 @@ body.gallery-open .floating-whatsapp {
     min-height: 62px;
     flex-wrap: nowrap;
     gap: 16px;
-    padding-block: 10px
+    padding-block: 8px
   }
 
   .site-header nav {
     width: auto;
     justify-content: flex-start;
-    gap: 20px;
-    font-size: 14px
+    gap: 18px;
+    font-size: 13px
   }
 
   .site-header nav a {
@@ -1916,7 +1940,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .brand-wordmark {
-    width: 122px
+    width: 114px
   }
 
   :root {
@@ -1930,7 +1954,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .project-heading h2,.single-project .project-heading h2 {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.5
   }
 
@@ -2106,45 +2130,60 @@ body.gallery-open .floating-whatsapp {
   }
 
   .caption-card,.video-card,.vera-logo-board,.media-card:not(.caption-card)>.media-frame {
-    box-shadow: 0 4px 16px #0f0f1008
+    border-color: #d8d4de;
+    box-shadow: 0 4px 14px #0f0f1008
   }
 
   .site-footer {
-    margin-top: 36px;
-    padding-top: 26px;
-    padding-bottom: calc(48px + env(safe-area-inset-bottom,0px))
+    margin-top: 32px;
+    padding-top: 20px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom,0px));
+    background: linear-gradient(135deg,#f4f2f6,var(--footer-gray))
   }
 
   .footer-main {
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px
+    gap: 12px
   }
 
   .site-footer .brand-wordmark {
-    width: 124px
+    width: 106px
   }
 
   .footer-invitation h2 {
-    font-size: 25px;
-    line-height: 1.6
+    font-size: 22px;
+    line-height: 1.45
   }
 
   .footer-contact {
-    margin-top: 16px;
-    gap: 20px
+    min-width: 104px;
+    min-height: 44px;
+    margin-top: 12px;
+    padding: 8px 14px;
+    gap: 12px;
+    border-color: #6a102645;
+    background: #fff;
+    color: var(--plum);
+    font-size: 13px
+  }
+
+  .footer-contact:hover {
+    background: #f8f5f7
   }
 
   .footer-bottom {
-    margin-top: 28px;
-    padding-block: 17px 18px;
-    gap: 18px
+    justify-content: space-between;
+    margin-top: 18px;
+    padding-block: 10px 12px;
+    padding-inline-end: 72px;
+    gap: 12px
   }
 
   .site-footer::before {
     left: -220px;
     top: -80px;
-    opacity: .65
+    opacity: .35
   }
 
   dialog {
@@ -2214,7 +2253,7 @@ body.gallery-open .floating-whatsapp {
 
 @media(max-width:380px) {
   .project-heading h2,.single-project .project-heading h2 {
-    font-size: 16px
+    font-size: 17px
   }
 
   .account-grid .media-frame {
@@ -2234,7 +2273,7 @@ body.gallery-open .floating-whatsapp {
   }
 
   .footer-invitation h2 {
-    font-size: 23px
+    font-size: 21px
   }
 
 }
