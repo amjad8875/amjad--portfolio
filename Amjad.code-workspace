@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "name": "Amjad Portfolio",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.encoding": "utf8",
+    "editor.tabSize": 2,
+    "files.eol": "\n"
+  }
+}
