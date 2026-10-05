@@ -27,7 +27,7 @@
   --ink: #0f0f10;
   --plum: #6a1026;
   --muted: #66616d;
-  --line: #ccc8d1;
+  --line: #d6d2dc;
   --soft: #e2dfe6;
   --warm: #f6f3ed;
   --accent: #6a1026;
@@ -114,13 +114,12 @@ button:focus-visible,a:focus-visible {
   top: 12px
 }
 
-/* A restrained masthead keeps the name and navigation distinct. */
+/* A white masthead gives the wordmark room without a red top strip. */
 .site-header {
   background: var(--paper);
   color: var(--ink);
-  border-top: 1px solid var(--plum);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 3px 18px #0f0f1006
+  border-bottom: 1px solid #e2dfe6;
+  box-shadow: none
 }
 
 .header-inner {
@@ -175,109 +174,211 @@ button:focus-visible,a:focus-visible {
   border-bottom: 1px solid var(--accent)
 }
 
-/* Quiet pearl-gray light sits behind the editorial cards. */
+/* A full-page composition continues behind every project, beyond the cover. */
 .page-ambience {
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(ellipse at 5% 18%,#e2dfe642,transparent 38%),radial-gradient(ellipse at 98% 72%,#6a102606,transparent 32%)
+  background: #fff
 }
 
-.ambient-orbit {
-  position: absolute;
-  width: 620px;
-  height: 820px;
-  border: 1px solid #6a102612;
-  border-radius: 50%;
-  box-shadow: 0 0 0 34px #6a102605,0 0 0 68px #0f0f1004;
-  will-change: transform;
-  animation: ambient-drift 24s ease-in-out infinite alternate
+.ambient-scene {
+  display: block;
+  width: 100%;
+  height: 100%
 }
 
-.orbit-one {
-  left: -430px;
-  top: 12%;
-  transform: rotate(-24deg)
+.ambient-scene path,.ambient-scene circle {
+  vector-effect: non-scaling-stroke
 }
 
-.orbit-two {
-  right: -480px;
-  bottom: -290px;
-  animation-delay: -12s;
-  animation-duration: 30s;
-  transform: rotate(18deg)
-}
-
-.ambient-glow {
-  position: absolute;
-  left: -140px;
-  top: 30%;
-  width: 420px;
-  height: 520px;
-  background: radial-gradient(ellipse,#e2dfe620,transparent 70%);
-  animation: ambient-breathe 18s ease-in-out infinite alternate
-}
-
-@keyframes ambient-drift {
+@keyframes sculpture-drift {
   to {
-    translate: 28px -32px;
-    rotate: 7deg
+    transform: translateY(-5px)
   }
 
 }
 
-@keyframes ambient-breathe {
-  to {
-    transform: translateY(38px);
-    opacity: .4
-  }
-
-}
-
-/* The opening is a compact title row, close to the first project. */
+/* An editorial cover: expertise on the right, a bespoke pearl form on the left. */
 .hero {
   position: relative;
-  min-height: 94px;
-  margin-top: 16px;
-  margin-bottom: 34px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-  background: transparent;
-  color: var(--plum);
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 52px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: linear-gradient(110deg,#e2dfe6 0%,#f7f6f9 38%,#fff 70%);
+  color: var(--ink);
   direction: rtl
 }
 
-.hero-copy {
-  display: flex;
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0,1.2fr) minmax(0,.9fr);
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
+  min-height: 350px;
+  padding: 32px 44px 26px
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none
+}
+
+.hero-background-art {
+  display: block;
+  width: 100%;
+  height: 100%
+}
+
+.hero-paper-contours {
+  animation: paper-contour-drift 22s ease-in-out infinite alternate
+}
+
+.hero-background-light {
+  animation: paper-light-drift 18s ease-in-out infinite alternate
+}
+
+@keyframes paper-contour-drift {
+  to {
+    transform: translate(7px,-4px)
+  }
+}
+
+@keyframes paper-light-drift {
+  to {
+    transform: translateX(18px);
+    opacity: .48
+  }
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
   min-width: 0;
   text-align: right
 }
 
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 17px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 27px;
+  height: 1px;
+  flex: none;
+  background: var(--plum)
+}
+
 .hero h1 {
   min-width: 0;
-  font-size: 34px;
+  font-size: clamp(36px,4.2vw,58px);
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.3;
   letter-spacing: 0;
+  color: var(--ink);
+  text-wrap: balance
+}
+
+.hero h1>span {
+  display: block;
   color: var(--plum)
 }
 
-.hero-period {
-  color: var(--accent);
-  padding-inline-start: 3px
+.hero-role {
+  max-width: 49ch;
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--muted)
 }
 
-.hero-role {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--muted);
-  margin: 0
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 44px;
+  margin-top: 22px;
+  padding: 9px 16px;
+  border: 1px solid #6a102647;
+  border-radius: 2px;
+  background: #fff;
+  color: var(--plum);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: background .2s,color .2s,border-color .2s
+}
+
+.hero-cta svg {
+  width: 17px;
+  height: 17px;
+  transition: transform .2s
+}
+
+.hero-cta:hover {
+  background: var(--plum);
+  border-color: var(--plum);
+  color: #fff
+}
+
+.hero-cta:hover svg {
+  transform: translateX(-3px)
+}
+
+.hero-art {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  height: 310px;
+  pointer-events: none
+}
+
+.hero-sculpture {
+  width: 100%;
+  height: calc(100% - 20px);
+  overflow: visible
+}
+
+.sculpture-form {
+  animation: sculpture-drift 12s ease-in-out infinite alternate
+}
+
+.hero-art-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--plum);
+  font-size: 12px;
+  line-height: 1.4
+}
+
+.hero-art-caption i {
+  width: 25px;
+  height: 1px;
+  background: #6a102633
 }
 
 /* Spaced dashes guide the eye between the section arrows. */
@@ -292,6 +393,31 @@ button:focus-visible,a:focus-visible {
   margin-top: var(--section-gap);
   min-width: 0;
   scroll-margin-top: 28px
+}
+
+/* Etched corner details sit in the existing gaps between projects. */
+.project-section::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -46px;
+  left: -18px;
+  width: min(280px,38%);
+  height: 72px;
+  background: repeating-linear-gradient(126deg,transparent 0 18px,#6a102626 18px 18.7px,transparent 18.7px 37px);
+  -webkit-mask-image: linear-gradient(90deg,#000,transparent 90%);
+  mask-image: linear-gradient(90deg,#000,transparent 90%);
+  opacity: .55;
+  pointer-events: none
+}
+
+.project-section:nth-child(even)::before {
+  width: min(340px,42%);
+  background: repeating-linear-gradient(126deg,transparent 0 22px,#9c91aa30 22px 22.7px,transparent 22.7px 45px)
+}
+
+.vera-project::before {
+  top: -28px
 }
 
 .vera-project {
@@ -367,13 +493,13 @@ button:focus-visible,a:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: 96px;
+  min-width: 84px;
   min-height: 44px;
-  padding: 10px 16px;
-  border: 1px solid var(--ink);
+  padding: 8px 13px;
+  border: 1px solid #6a102638;
   border-radius: 2px;
-  background: var(--ink);
-  color: var(--cream);
+  background: #fff;
+  color: var(--plum);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
@@ -657,7 +783,7 @@ button:focus-visible,a:focus-visible {
   border: 1px solid var(--line);
   border-radius: 2px;
   background: #fff;
-  box-shadow: 0 7px 24px #0f0f1009
+  box-shadow: 0 2px 3px #0f0f1003,0 10px 28px #3e32450a
 }
 
 .caption-card>.media-frame,.caption-card.snap-report>button {
@@ -1003,14 +1129,8 @@ button:focus-visible,a:focus-visible {
   content: '';
   position: absolute;
   z-index: -1;
-  left: -110px;
-  top: -120px;
-  width: 410px;
-  height: 470px;
-  border: 1px solid #6a102615;
-  border-radius: 50%;
-  box-shadow: 0 0 0 26px #6a102604,0 0 0 52px #6a102602;
-  transform: rotate(-28deg);
+  inset: 0;
+  background: linear-gradient(112deg,#e2dfe6,#f3f1f6 55%,#e2dfe6);
   pointer-events: none
 }
 
@@ -1052,10 +1172,10 @@ button:focus-visible,a:focus-visible {
   min-height: 46px;
   margin-top: 19px;
   padding: 10px 21px;
-  border: 1px solid var(--ink);
+  border: 1px solid #6a102640;
   border-radius: 2px;
-  background: var(--ink);
-  color: #fff;
+  background: #fff;
+  color: var(--plum);
   font-size: 14px;
   font-weight: 500;
   direction: rtl;
@@ -1069,7 +1189,8 @@ button:focus-visible,a:focus-visible {
 }
 
 .footer-contact:hover {
-  background: var(--plum)
+  background: var(--plum);
+  color: #fff
 }
 
 .footer-contact:hover svg {
@@ -1324,7 +1445,7 @@ body.gallery-open .floating-whatsapp {
 }
 
 .video-card,.vera-logo-board,.media-card:not(.caption-card)>.media-frame {
-  box-shadow: 0 7px 24px #0f0f1009
+  box-shadow: 0 2px 3px #0f0f1003,0 10px 28px #3e32450a
 }
 
 .caption-card:focus-within,.video-card:focus-within {
@@ -1360,6 +1481,15 @@ body.gallery-open .floating-whatsapp {
 }
 
 @media(max-width:1000px) {
+  .hero-layout {
+    padding: 28px 28px 24px;
+    gap: 18px
+  }
+
+  .hero-art {
+    height: 275px
+  }
+
   .wrap {
     width: calc(100% - 40px)
   }
@@ -1438,19 +1568,80 @@ body.gallery-open .floating-whatsapp {
   }
 
   .hero {
+    margin-top: 16px;
+    margin-bottom: 38px;
+    padding: 0;
+    background: linear-gradient(110deg,#ece9f0 0%,#faf9fb 45%,#fff 90%)
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0,1fr);
     min-height: 0;
-    margin-top: 8px;
-    margin-bottom: 22px;
-    padding: 16px 0
+    padding: 26px 24px;
+    gap: 0
+  }
+
+  .hero-backdrop {
+    opacity: .72
+  }
+
+  .hero-paper-contours,.hero-background-light {
+    animation: none
+  }
+
+  .hero-copy {
+    max-width: 560px
   }
 
   .hero h1 {
-    font-size: 31px;
+    font-size: clamp(32px,5.4vw,42px);
     color: var(--ink)
   }
 
   .hero-role {
-    font-size: 14px
+    max-width: 48ch;
+    font-size: 15px
+  }
+
+  .hero-art {
+    position: absolute;
+    left: -58px;
+    top: 20px;
+    width: 300px;
+    height: 285px;
+    opacity: .16
+  }
+
+  .hero-art-caption {
+    display: none
+  }
+
+  .hero-sculpture {
+    height: 100%
+  }
+
+  .sculpture-form {
+    animation: none
+  }
+
+  .ambient-scene {
+    opacity: .85
+  }
+
+  .project-section::before {
+    top: -30px;
+    left: -8px;
+    width: 150px;
+    height: 48px;
+    opacity: .48
+  }
+
+  .project-section:nth-child(even)::before {
+    width: 170px
+  }
+
+  .vera-project::before {
+    top: -22px
   }
 
   .work-section {
@@ -1776,45 +1967,58 @@ body.gallery-open .floating-whatsapp {
 
 @media(max-width:560px) {
   .hero {
-    min-height: 0;
-    margin-top: 6px;
-    margin-bottom: 22px;
-    padding: 14px 0;
-    border-bottom: 0
+    margin-top: 12px;
+    margin-bottom: 34px;
+    padding: 0
   }
 
-  .hero-copy {
-    display: block
+  .hero-layout {
+    padding: 23px 20px 22px
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 14px;
+    font-size: 12px;
+    gap: 8px
+  }
+
+  .hero-eyebrow::before {
+    width: 20px
   }
 
   .hero h1 {
-    font-size: 29px
+    font-size: clamp(29px,7.8vw,36px);
+    line-height: 1.35
   }
 
   .hero-role {
     font-size: 14px;
-    margin-top: 5px
+    margin-top: 16px;
+    line-height: 1.8
   }
 
-  .orbit-one {
-    left: -540px
+  .hero-cta {
+    margin-top: 18px;
+    padding: 8px 12px;
+    gap: 18px;
+    font-size: 13px
   }
 
-  .orbit-two {
-    right: -560px
+  .hero-cta svg {
+    width: 15px;
+    height: 15px
+  }
+
+  .hero-art {
+    left: -82px;
+    top: 12px;
+    width: 260px;
+    height: 265px;
+    opacity: .16
   }
 
   .page-ambience {
-    opacity: .45
-  }
-
-  .ambient-orbit,.ambient-glow {
-    animation: none;
-    will-change: auto
-  }
-
-  .ambient-glow {
-    display: none
+    opacity: 1
   }
 
   .section-flow {
@@ -2169,7 +2373,8 @@ body.gallery-open .floating-whatsapp {
   }
 
   .footer-contact:hover {
-    background: #f8f5f7
+    background: #f8f5f7;
+    color: var(--plum)
   }
 
   .footer-bottom {

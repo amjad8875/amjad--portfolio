@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff" media="(max-width: 780px)">
 <meta name="theme-color" content="#6a1026">
-<meta name="description" content="Amjad — تطوير الأعمال، ابتكار الهوية وصناعة حضور العلامات."><title>Amjad | معرض الأعمال</title>
+<meta name="description" content="Amjad — الأعمال المختارة في تطوير الأعمال وإدارة التسويق والهوية والمحتوى والحملات والشراكات."><title>Amjad | الأعمال المختارة</title>
 <link rel="icon" type="image/svg+xml" href="amjad-mark.svg">
 <style>
 @font-face {
@@ -37,7 +37,7 @@
   --ink: #0f0f10;
   --plum: #6a1026;
   --muted: #66616d;
-  --line: #ccc8d1;
+  --line: #d6d2dc;
   --soft: #e2dfe6;
   --warm: #f6f3ed;
   --accent: #6a1026;
@@ -124,13 +124,12 @@ button:focus-visible,a:focus-visible {
   top: 12px
 }
 
-/* A restrained masthead keeps the name and navigation distinct. */
+/* A white masthead gives the wordmark room without a red top strip. */
 .site-header {
   background: var(--paper);
   color: var(--ink);
-  border-top: 1px solid var(--plum);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 3px 18px #0f0f1006
+  border-bottom: 1px solid #e2dfe6;
+  box-shadow: none
 }
 
 .header-inner {
@@ -185,109 +184,211 @@ button:focus-visible,a:focus-visible {
   border-bottom: 1px solid var(--accent)
 }
 
-/* Quiet pearl-gray light sits behind the editorial cards. */
+/* A full-page composition continues behind every project, beyond the cover. */
 .page-ambience {
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(ellipse at 5% 18%,#e2dfe642,transparent 38%),radial-gradient(ellipse at 98% 72%,#6a102606,transparent 32%)
+  background: #fff
 }
 
-.ambient-orbit {
-  position: absolute;
-  width: 620px;
-  height: 820px;
-  border: 1px solid #6a102612;
-  border-radius: 50%;
-  box-shadow: 0 0 0 34px #6a102605,0 0 0 68px #0f0f1004;
-  will-change: transform;
-  animation: ambient-drift 24s ease-in-out infinite alternate
+.ambient-scene {
+  display: block;
+  width: 100%;
+  height: 100%
 }
 
-.orbit-one {
-  left: -430px;
-  top: 12%;
-  transform: rotate(-24deg)
+.ambient-scene path,.ambient-scene circle {
+  vector-effect: non-scaling-stroke
 }
 
-.orbit-two {
-  right: -480px;
-  bottom: -290px;
-  animation-delay: -12s;
-  animation-duration: 30s;
-  transform: rotate(18deg)
-}
-
-.ambient-glow {
-  position: absolute;
-  left: -140px;
-  top: 30%;
-  width: 420px;
-  height: 520px;
-  background: radial-gradient(ellipse,#e2dfe620,transparent 70%);
-  animation: ambient-breathe 18s ease-in-out infinite alternate
-}
-
-@keyframes ambient-drift {
+@keyframes sculpture-drift {
   to {
-    translate: 28px -32px;
-    rotate: 7deg
+    transform: translateY(-5px)
   }
 
 }
 
-@keyframes ambient-breathe {
-  to {
-    transform: translateY(38px);
-    opacity: .4
-  }
-
-}
-
-/* The opening is a compact title row, close to the first project. */
+/* An editorial cover: expertise on the right, a bespoke pearl form on the left. */
 .hero {
   position: relative;
-  min-height: 94px;
-  margin-top: 16px;
-  margin-bottom: 34px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-  background: transparent;
-  color: var(--plum);
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 52px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: linear-gradient(110deg,#e2dfe6 0%,#f7f6f9 38%,#fff 70%);
+  color: var(--ink);
   direction: rtl
 }
 
-.hero-copy {
-  display: flex;
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0,1.2fr) minmax(0,.9fr);
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
+  min-height: 350px;
+  padding: 32px 44px 26px
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none
+}
+
+.hero-background-art {
+  display: block;
+  width: 100%;
+  height: 100%
+}
+
+.hero-paper-contours {
+  animation: paper-contour-drift 22s ease-in-out infinite alternate
+}
+
+.hero-background-light {
+  animation: paper-light-drift 18s ease-in-out infinite alternate
+}
+
+@keyframes paper-contour-drift {
+  to {
+    transform: translate(7px,-4px)
+  }
+}
+
+@keyframes paper-light-drift {
+  to {
+    transform: translateX(18px);
+    opacity: .48
+  }
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
   min-width: 0;
   text-align: right
 }
 
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 17px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 27px;
+  height: 1px;
+  flex: none;
+  background: var(--plum)
+}
+
 .hero h1 {
   min-width: 0;
-  font-size: 34px;
+  font-size: clamp(36px,4.2vw,58px);
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.3;
   letter-spacing: 0;
+  color: var(--ink);
+  text-wrap: balance
+}
+
+.hero h1>span {
+  display: block;
   color: var(--plum)
 }
 
-.hero-period {
-  color: var(--accent);
-  padding-inline-start: 3px
+.hero-role {
+  max-width: 49ch;
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--muted)
 }
 
-.hero-role {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--muted);
-  margin: 0
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 44px;
+  margin-top: 22px;
+  padding: 9px 16px;
+  border: 1px solid #6a102647;
+  border-radius: 2px;
+  background: #fff;
+  color: var(--plum);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: background .2s,color .2s,border-color .2s
+}
+
+.hero-cta svg {
+  width: 17px;
+  height: 17px;
+  transition: transform .2s
+}
+
+.hero-cta:hover {
+  background: var(--plum);
+  border-color: var(--plum);
+  color: #fff
+}
+
+.hero-cta:hover svg {
+  transform: translateX(-3px)
+}
+
+.hero-art {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  height: 310px;
+  pointer-events: none
+}
+
+.hero-sculpture {
+  width: 100%;
+  height: calc(100% - 20px);
+  overflow: visible
+}
+
+.sculpture-form {
+  animation: sculpture-drift 12s ease-in-out infinite alternate
+}
+
+.hero-art-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--plum);
+  font-size: 12px;
+  line-height: 1.4
+}
+
+.hero-art-caption i {
+  width: 25px;
+  height: 1px;
+  background: #6a102633
 }
 
 /* Spaced dashes guide the eye between the section arrows. */
@@ -302,6 +403,31 @@ button:focus-visible,a:focus-visible {
   margin-top: var(--section-gap);
   min-width: 0;
   scroll-margin-top: 28px
+}
+
+/* Etched corner details sit in the existing gaps between projects. */
+.project-section::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -46px;
+  left: -18px;
+  width: min(280px,38%);
+  height: 72px;
+  background: repeating-linear-gradient(126deg,transparent 0 18px,#6a102626 18px 18.7px,transparent 18.7px 37px);
+  -webkit-mask-image: linear-gradient(90deg,#000,transparent 90%);
+  mask-image: linear-gradient(90deg,#000,transparent 90%);
+  opacity: .55;
+  pointer-events: none
+}
+
+.project-section:nth-child(even)::before {
+  width: min(340px,42%);
+  background: repeating-linear-gradient(126deg,transparent 0 22px,#9c91aa30 22px 22.7px,transparent 22.7px 45px)
+}
+
+.vera-project::before {
+  top: -28px
 }
 
 .vera-project {
@@ -377,13 +503,13 @@ button:focus-visible,a:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: 96px;
+  min-width: 84px;
   min-height: 44px;
-  padding: 10px 16px;
-  border: 1px solid var(--ink);
+  padding: 8px 13px;
+  border: 1px solid #6a102638;
   border-radius: 2px;
-  background: var(--ink);
-  color: var(--cream);
+  background: #fff;
+  color: var(--plum);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
@@ -667,7 +793,7 @@ button:focus-visible,a:focus-visible {
   border: 1px solid var(--line);
   border-radius: 2px;
   background: #fff;
-  box-shadow: 0 7px 24px #0f0f1009
+  box-shadow: 0 2px 3px #0f0f1003,0 10px 28px #3e32450a
 }
 
 .caption-card>.media-frame,.caption-card.snap-report>button {
@@ -1013,14 +1139,8 @@ button:focus-visible,a:focus-visible {
   content: '';
   position: absolute;
   z-index: -1;
-  left: -110px;
-  top: -120px;
-  width: 410px;
-  height: 470px;
-  border: 1px solid #6a102615;
-  border-radius: 50%;
-  box-shadow: 0 0 0 26px #6a102604,0 0 0 52px #6a102602;
-  transform: rotate(-28deg);
+  inset: 0;
+  background: linear-gradient(112deg,#e2dfe6,#f3f1f6 55%,#e2dfe6);
   pointer-events: none
 }
 
@@ -1062,10 +1182,10 @@ button:focus-visible,a:focus-visible {
   min-height: 46px;
   margin-top: 19px;
   padding: 10px 21px;
-  border: 1px solid var(--ink);
+  border: 1px solid #6a102640;
   border-radius: 2px;
-  background: var(--ink);
-  color: #fff;
+  background: #fff;
+  color: var(--plum);
   font-size: 14px;
   font-weight: 500;
   direction: rtl;
@@ -1079,7 +1199,8 @@ button:focus-visible,a:focus-visible {
 }
 
 .footer-contact:hover {
-  background: var(--plum)
+  background: var(--plum);
+  color: #fff
 }
 
 .footer-contact:hover svg {
@@ -1334,7 +1455,7 @@ body.gallery-open .floating-whatsapp {
 }
 
 .video-card,.vera-logo-board,.media-card:not(.caption-card)>.media-frame {
-  box-shadow: 0 7px 24px #0f0f1009
+  box-shadow: 0 2px 3px #0f0f1003,0 10px 28px #3e32450a
 }
 
 .caption-card:focus-within,.video-card:focus-within {
@@ -1370,6 +1491,15 @@ body.gallery-open .floating-whatsapp {
 }
 
 @media(max-width:1000px) {
+  .hero-layout {
+    padding: 28px 28px 24px;
+    gap: 18px
+  }
+
+  .hero-art {
+    height: 275px
+  }
+
   .wrap {
     width: calc(100% - 40px)
   }
@@ -1448,19 +1578,80 @@ body.gallery-open .floating-whatsapp {
   }
 
   .hero {
+    margin-top: 16px;
+    margin-bottom: 38px;
+    padding: 0;
+    background: linear-gradient(110deg,#ece9f0 0%,#faf9fb 45%,#fff 90%)
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0,1fr);
     min-height: 0;
-    margin-top: 8px;
-    margin-bottom: 22px;
-    padding: 16px 0
+    padding: 26px 24px;
+    gap: 0
+  }
+
+  .hero-backdrop {
+    opacity: .72
+  }
+
+  .hero-paper-contours,.hero-background-light {
+    animation: none
+  }
+
+  .hero-copy {
+    max-width: 560px
   }
 
   .hero h1 {
-    font-size: 31px;
+    font-size: clamp(32px,5.4vw,42px);
     color: var(--ink)
   }
 
   .hero-role {
-    font-size: 14px
+    max-width: 48ch;
+    font-size: 15px
+  }
+
+  .hero-art {
+    position: absolute;
+    left: -58px;
+    top: 20px;
+    width: 300px;
+    height: 285px;
+    opacity: .16
+  }
+
+  .hero-art-caption {
+    display: none
+  }
+
+  .hero-sculpture {
+    height: 100%
+  }
+
+  .sculpture-form {
+    animation: none
+  }
+
+  .ambient-scene {
+    opacity: .85
+  }
+
+  .project-section::before {
+    top: -30px;
+    left: -8px;
+    width: 150px;
+    height: 48px;
+    opacity: .48
+  }
+
+  .project-section:nth-child(even)::before {
+    width: 170px
+  }
+
+  .vera-project::before {
+    top: -22px
   }
 
   .work-section {
@@ -1786,45 +1977,58 @@ body.gallery-open .floating-whatsapp {
 
 @media(max-width:560px) {
   .hero {
-    min-height: 0;
-    margin-top: 6px;
-    margin-bottom: 22px;
-    padding: 14px 0;
-    border-bottom: 0
+    margin-top: 12px;
+    margin-bottom: 34px;
+    padding: 0
   }
 
-  .hero-copy {
-    display: block
+  .hero-layout {
+    padding: 23px 20px 22px
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 14px;
+    font-size: 12px;
+    gap: 8px
+  }
+
+  .hero-eyebrow::before {
+    width: 20px
   }
 
   .hero h1 {
-    font-size: 29px
+    font-size: clamp(29px,7.8vw,36px);
+    line-height: 1.35
   }
 
   .hero-role {
     font-size: 14px;
-    margin-top: 5px
+    margin-top: 16px;
+    line-height: 1.8
   }
 
-  .orbit-one {
-    left: -540px
+  .hero-cta {
+    margin-top: 18px;
+    padding: 8px 12px;
+    gap: 18px;
+    font-size: 13px
   }
 
-  .orbit-two {
-    right: -560px
+  .hero-cta svg {
+    width: 15px;
+    height: 15px
+  }
+
+  .hero-art {
+    left: -82px;
+    top: 12px;
+    width: 260px;
+    height: 265px;
+    opacity: .16
   }
 
   .page-ambience {
-    opacity: .45
-  }
-
-  .ambient-orbit,.ambient-glow {
-    animation: none;
-    will-change: auto
-  }
-
-  .ambient-glow {
-    display: none
+    opacity: 1
   }
 
   .section-flow {
@@ -2179,7 +2383,8 @@ body.gallery-open .floating-whatsapp {
   }
 
   .footer-contact:hover {
-    background: #f8f5f7
+    background: #f8f5f7;
+    color: var(--plum)
   }
 
   .footer-bottom {
@@ -2303,23 +2508,100 @@ body.gallery-open .floating-whatsapp {
   }
 
 }
+
 </style>
 </head>
 <body>
-<div class="page-ambience" aria-hidden="true"><span class="ambient-orbit orbit-one"></span><span class="ambient-orbit orbit-two"></span><span class="ambient-glow"></span>
-</div><a class="skip-link" href="#work">انتقل إلى الأعمال</a>
+<div class="page-ambience" aria-hidden="true">
+<svg class="ambient-scene" viewBox="0 0 1440 1000" preserveAspectRatio="none" fill="none" focusable="false">
+<defs>
+<linearGradient id="page-pearl" x1="0" y1="500" x2="1440" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#ede9f2"/><stop offset=".32" stop-color="#ffffff"/><stop offset=".76" stop-color="#ffffff"/><stop offset="1" stop-color="#f2eef5"/></linearGradient>
+<linearGradient id="page-fold" x1="-90" y1="790" x2="510" y2="635" gradientUnits="userSpaceOnUse"><stop stop-color="#ded9e6"/><stop offset=".7" stop-color="#f4f1f7"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+<linearGradient id="page-curve" x1="0" y1="820" x2="630" y2="350" gradientUnits="userSpaceOnUse"><stop stop-color="#6a1026" stop-opacity=".23"/><stop offset=".6" stop-color="#6a1026" stop-opacity=".14"/><stop offset="1" stop-color="#6a1026" stop-opacity=".03"/></linearGradient>
+</defs>
+<path d="M0 0H1440V1000H0Z" fill="url(#page-pearl)"/>
+<path d="M-80 420 445 1000H-80Z" fill="url(#page-fold)" opacity=".7"/>
+<path d="M-60-30H335L-60 665Z" fill="#e2dfe6" opacity=".28"/>
+<path d="M1200-30H1470V470Z" fill="#e2dfe6" opacity=".4"/>
+<path d="M-20 430 478 1000 M1190-20 1450 465" stroke="#ffffff" stroke-opacity=".8"/>
+<g stroke="url(#page-curve)" stroke-width=".9">
+<path d="M-80 945C180 845 535 800 555 630 581 405 115 424-20 175"/>
+<path d="M-80 988C225 877 574 807 587 630 605 390 147 397 10 161" opacity=".55"/>
+<path d="M-80 1030C262 903 612 815 619 630 629 375 180 370 40 146" opacity=".25"/>
+</g>
+<g stroke="#6a1026" stroke-width=".75" stroke-opacity=".14">
+<path d="M1500 965C1265 955 1185 815 1302 670 1384 568 1340 429 1455 385"/>
+<path d="M1500 995C1224 982 1149 814 1266 663 1345 561 1306 421 1431 357" opacity=".5"/>
+<path d="M75 235H135V287H188 M1270 135H1350V212"/>
+</g>
+<g fill="#6a1026" fill-opacity=".2"><circle cx="75" cy="235" r="2.5"/><circle cx="188" cy="287" r="2.5"/><circle cx="1270" cy="135" r="2.5"/></g>
+<path d="M34 680H105 M34 689H88 M34 698H70" stroke="#6a1026" stroke-opacity=".17" stroke-width=".75"/>
+</svg>
+</div><a class="skip-link" href="#work">انتقل إلى الأعمال المختارة</a>
 <header class="site-header">
 <div class="wrap header-inner"><a href="#top" class="amjad-brand" aria-label="AMJAD، الرئيسية"><img class="brand-wordmark" src="amjad-wordmark.svg" alt="Amjad" width="144" height="52"></a>
-<nav aria-label="التنقل الرئيسي"><a href="#work">الأعمال</a><a class="nav-contact" href="https://wa.me/966501286995" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">تواصل</a>
+<nav aria-label="التنقل الرئيسي"><a href="#work">الأعمال المختارة</a><a class="nav-contact" href="https://wa.me/966501286995" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">تواصل</a>
 </nav>
 </div>
 </header>
 <main id="top">
 <section class="hero wrap" aria-labelledby="hero-title">
+<div class="hero-backdrop" aria-hidden="true">
+<svg class="hero-background-art" viewBox="0 0 1440 640" preserveAspectRatio="xMinYMid slice" fill="none" focusable="false">
+<defs>
+<linearGradient id="hero-paper" x1="95" y1="450" x2="1190" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#e2dfe6"/><stop offset=".54" stop-color="#f3f1f6"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+<linearGradient id="hero-fold" x1="40" y1="465" x2="735" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#d9d4df" stop-opacity=".72"/><stop offset=".62" stop-color="#f5f3f8"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+<linearGradient id="hero-fold-edge" x1="190" y1="550" x2="790" y2="45" gradientUnits="userSpaceOnUse"><stop stop-color="#b9b0c4" stop-opacity=".4"/><stop offset=".58" stop-color="#ffffff"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+<linearGradient id="hero-contour" x1="135" y1="580" x2="900" y2="-40" gradientUnits="userSpaceOnUse"><stop stop-color="#6a1026" stop-opacity=".24"/><stop offset=".7" stop-color="#6a1026" stop-opacity=".12"/><stop offset="1" stop-color="#6a1026" stop-opacity="0"/></linearGradient>
+<linearGradient id="hero-light" x1="200" y1="290" x2="740" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity="0"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".65"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+</defs>
+<path d="M0 0H1440V640H0Z" fill="url(#hero-paper)"/>
+<g class="hero-paper-folds">
+<path d="M-170 620 420-95H792L195 640H-170Z" fill="url(#hero-fold)"/>
+<path d="M195 640 792-95H865L266 640Z" fill="url(#hero-fold-edge)" opacity=".48"/>
+<path d="M195 640 792-95" stroke="#ffffff" stroke-opacity=".78" stroke-width="1.2"/>
+<path d="M1175-20H1460V180Z" fill="#eeebf2" opacity=".55"/>
+<path d="M1175-20 1460 180" stroke="#d4cdda" stroke-opacity=".42" stroke-width=".8"/>
+</g>
+<g class="hero-paper-contours" stroke="url(#hero-contour)" stroke-width=".85">
+<path d="M-95 675C205 592 258 453 350 287 475 62 656-58 982-47"/>
+<path d="M-85 725C244 628 308 473 398 313 523 90 707-17 1016-8" opacity=".52"/>
+<path d="M-72 773C274 664 352 497 446 340 568 137 758 25 1048 31" opacity=".24"/>
+</g>
+<path class="hero-background-light" d="M105 640 657-70H936L388 640Z" fill="url(#hero-light)" opacity=".3"/>
+<path d="M27 110V30H107 M1333 590H1413V510" stroke="#6a1026" stroke-opacity=".13" stroke-width=".8"/>
+</svg>
+</div>
+<div class="hero-layout">
 <div class="hero-copy">
-<h1 id="hero-title">أعمال مختارة<span class="hero-period">.</span>
-</h1>
-<p class="hero-role">أُطوّر الأعمال، وأصنع حضور العلامات.</p>
+<p class="hero-eyebrow">تطوير الأعمال والتسويق الرقمي</p>
+<h1 id="hero-title">رؤيةٌ للأعمال.<span>وحضورٌ يليق بالعلامة.</span></h1>
+<p class="hero-role">تطوير الأعمال وإدارة التسويق، برؤية تربط هوية العلامة ومحتواها وحملاتها بأهدافها التجارية.</p>
+<a class="hero-cta" href="#work"><span>الأعمال المختارة</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/></svg></a>
+</div>
+<div class="hero-art" aria-hidden="true">
+<svg class="hero-sculpture" viewBox="0 0 540 440" fill="none" focusable="false">
+<defs>
+<linearGradient id="sculpture-pearl" x1="126" y1="95" x2="420" y2="356" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff"/><stop offset=".55" stop-color="#f6f5f8"/><stop offset="1" stop-color="#d9d5df"/></linearGradient>
+<linearGradient id="sculpture-cut" x1="190" y1="172" x2="337" y2="363" gradientUnits="userSpaceOnUse"><stop stop-color="#c3bccb"/><stop offset=".35" stop-color="#e2dfe6"/><stop offset="1" stop-color="#faf9fb"/></linearGradient>
+<linearGradient id="sculpture-velvet" x1="342" y1="202" x2="366" y2="363" gradientUnits="userSpaceOnUse"><stop stop-color="#8a2c45"/><stop offset="1" stop-color="#520a1c"/></linearGradient>
+</defs>
+<ellipse class="sculpture-shadow" cx="279" cy="383" rx="157" ry="17" fill="#b9b1c1" opacity=".12"/>
+<path class="sculpture-contour" d="M83 366V212a183 183 0 0 1 366 0v154 M110 366V213a156 156 0 0 1 312 0v153" stroke="#6a1026" stroke-opacity=".12" stroke-width=".8"/>
+<g class="sculpture-form">
+<path d="M143 365V218a123 123 0 0 1 246 0v147h-58V220a65 65 0 0 0-130 0v145Z" fill="url(#sculpture-pearl)" stroke="#d1ccd7" stroke-width=".7"/>
+<path d="M201 365V220a65 65 0 0 1 130 0v145h-14V223a51 51 0 0 0-102 0v142Z" fill="url(#sculpture-cut)"/>
+<path d="M155 353V218a111 111 0 0 1 222 0v135" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.2"/>
+<path d="M201 365V220a65 65 0 0 1 130 0v145" stroke="#a49aac" stroke-opacity=".25" stroke-width=".8"/>
+<path d="M342 365V228a76 76 0 0 0-20-51l10-12a91 91 0 0 1 24 62v138Z" fill="url(#sculpture-velvet)"/>
+<path d="M143 365h246" stroke="#a69dad" stroke-opacity=".4" stroke-width="1"/>
+</g>
+<path d="M51 397H488" stroke="#6a1026" stroke-opacity=".16" stroke-width=".7"/>
+<path d="M52 397h30 M457 397h30" stroke="#6a1026" stroke-opacity=".5" stroke-width="1"/>
+<path d="M256 45h20" stroke="#6a1026" stroke-opacity=".3" stroke-width=".7"/>
+</svg>
+<div class="hero-art-caption"><span>رؤية</span><i></i><span>هوية</span><i></i><span>حضور</span></div>
+</div>
 </div>
 </section>
 <section id="work" class="work-section wrap" aria-label="الأعمال المختارة">
@@ -2330,6 +2612,7 @@ body.gallery-open .floating-whatsapp {
 </svg></a>
 <h2 id="title-vera">ابتكار الشعار وتأسيس الهوية<span class="title-dot">.</span>
 </h2>
+<p class="section-description">من ابتكار الشعار والتصوّر قبل البناء، إلى تطبيق الهوية على أرض الواقع.</p>
 </div>
 <button class="more-link" type="button" data-gallery="vera" data-start="3" aria-label="المزيد من تطبيقات هوية فيرا والكتالوج"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2371,7 +2654,7 @@ body.gallery-open .floating-whatsapp {
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
 <h2 id="title-videos">تغطياتي والمحتوى المصور</h2>
-<p class="section-description">تغطيات مصوّرة وتجارب العملاء والنتائج.</p>
+<p class="section-description">تغطيات وتجارب عملاء ونتائج، بمحتوى يقرّب العلامة من جمهورها.</p>
 </div>
 <button class="more-link" type="button" data-gallery="videos" data-start="3" aria-label="المزيد من تغطياتي والمحتوى المصور"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2431,7 +2714,7 @@ body.gallery-open .floating-whatsapp {
 <p class="sector-label">المجوهرات</p>
 <h2 id="title-content-planning">إدارة الحسابات وصناعة المحتوى <span class="heading-note">بالذكاء الاصطناعي <span lang="en" dir="ltr">(AI)</span></span>
 </h2>
-<p class="section-description">تنسيق محتوى المجوهرات وتطوير الأفكار بما يناسب هوية العلامة.</p>
+<p class="section-description">تخطيط المحتوى وإدارة الحساب، مع توظيف أدوات الذكاء الاصطناعي بما ينسجم مع هوية المجوهرات.</p>
 </div>
 <button class="more-link" type="button" data-gallery="planning" data-start="2" aria-label="المزيد من إدارة الحسابات وصناعة المحتوى بالذكاء الاصطناعي (AI)"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2480,7 +2763,7 @@ body.gallery-open .floating-whatsapp {
 </svg></a>
 <p class="sector-label">العيادات والجماليات</p>
 <h2 id="title-social">إدارة الحسابات <span class="heading-phrase">على وسائل التواصل</span></h2>
-<p class="section-description">تنسيق محتوى العيادات والجماليات ومتابعة حضورها على المنصات.</p>
+<p class="section-description">إدارة النشر وتنسيق المحتوى، لحضور متسق يوضّح الخدمات وتجربة العملاء.</p>
 </div>
 <button class="more-link" type="button" data-gallery="social" data-start="2" aria-label="المزيد من إدارة حسابات العيادات والجماليات"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2510,7 +2793,7 @@ body.gallery-open .floating-whatsapp {
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
 <h2 id="title-ads">الحملات التسويقية</h2>
-<p class="section-description">تخطيط العروض ومتابعة أداء الحملات عبر تقارير المنصات.</p>
+<p class="section-description">من صياغة العرض إلى متابعة الحملة، مع قراءة الوصول والتفاعل ونتائج الأداء.</p>
 </div>
 </div>
 <article class="sector-group" aria-labelledby="sector-ads">
@@ -2550,7 +2833,7 @@ body.gallery-open .floating-whatsapp {
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
 <h2 id="title-partnerships">التعاقدات والتعاونات</h2>
-<p class="section-description">تنسيق التعاقدات ومتابعة تغطيات الجهات وصنّاع المحتوى.</p>
+<p class="section-description">اختيار جهات التعاون وتنظيم التعاقدات، ثم متابعة التغطيات وتنفيذها.</p>
 </div>
 <button class="more-link" type="button" data-gallery="contracts" data-start="2" aria-label="المزيد من التعاقدات والتعاونات"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2611,7 +2894,7 @@ body.gallery-open .floating-whatsapp {
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
 <h2 id="title-gifts">المنتجات والهدايا</h2>
-<p class="section-description">تصوير المنتجات وتقديم تجربة الإهداء بمحتوى بصري.</p>
+<p class="section-description">إبراز تفاصيل المنتج وتجربة الإهداء، بصور ومحتوى يخدم قرار الشراء.</p>
 </div>
 <button class="more-link" type="button" data-gallery="gifts" data-start="1" aria-label="المزيد من المنتجات والهدايا"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2631,7 +2914,7 @@ body.gallery-open .floating-whatsapp {
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
 <h2 id="title-study">دراسة المحتوى وتنسيقه</h2>
-<p class="section-description">تحليل الأفكار وتنسيق المحتوى لعرض واضح ومتناسق.</p>
+<p class="section-description">دراسة الأفكار وتنظيمها بصريًا، لتقديم محتوى واضح ومتسق.</p>
 </div>
 <button class="more-link" type="button" data-gallery="study" data-start="1" aria-label="المزيد من دراسة المحتوى وتنسيقه"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2651,7 +2934,7 @@ body.gallery-open .floating-whatsapp {
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
 <h2 id="title-designs">التصاميم التسويقية</h2>
-<p class="section-description">تصميم محتوى يوضّح الخدمات والعروض بما يناسب هوية العلامة.</p>
+<p class="section-description">تحويل الخدمات والعروض إلى تصاميم واضحة تحافظ على هوية العلامة.</p>
 </div>
 <button class="more-link" type="button" data-gallery="designs" data-start="1" aria-label="المزيد من التصاميم التسويقية"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2667,11 +2950,11 @@ body.gallery-open .floating-whatsapp {
 </section>
 <section id="planning-reputation" class="project-section single-project last-project" aria-labelledby="title-presence">
 <div class="project-heading">
-<div class="heading-copy"><a class="section-flow" href="#contact" aria-label="الانتقال إلى ختام معرض الأعمال">
+<div class="heading-copy"><a class="section-flow" href="#contact" aria-label="الانتقال إلى ختام الأعمال المختارة">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14 M5 12l7 7 7-7"/>
 </svg></a>
 <h2 id="title-presence">خطة المحتوى <span class="heading-phrase">ورفع السمعة الرقمية</span></h2>
-<p class="section-description">تخطيط المحتوى ومتابعة تقييمات الفروع وحضورها الرقمي.</p>
+<p class="section-description">تنظيم خطة النشر ومتابعة تقييمات الفروع، لبناء حضور رقمي أكثر اتساقًا.</p>
 </div>
 <button class="more-link" type="button" data-gallery="presence" data-start="1" aria-label="المزيد من خطة المحتوى ورفع السمعة الرقمية"><span>المزيد</span>
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5 M12 5l-7 7 7 7"/>
@@ -2746,7 +3029,7 @@ body.gallery-open .floating-whatsapp {
   const projects = {
     planning: {
       "title": "إدارة الحسابات وصناعة المحتوى بالذكاء الاصطناعي (AI)",
-      "label": "المجوهرات — تنسيق محتوى المجوهرات وتطوير الأفكار بما يناسب هوية العلامة.",
+      "label": "المجوهرات — تخطيط المحتوى وإدارة الحساب، مع توظيف أدوات الذكاء الاصطناعي بما ينسجم مع هوية المجوهرات.",
       "media": [
         {
           "file": "PLAN4.jpeg",
@@ -2792,7 +3075,7 @@ body.gallery-open .floating-whatsapp {
     },
     contracts: {
       "title": "التعاقدات والتعاونات",
-      "label": "تنسيق التعاقدات ومتابعة تغطيات الجهات وصنّاع المحتوى.",
+      "label": "اختيار جهات التعاون وتنظيم التعاقدات، ثم متابعة التغطيات وتنفيذها.",
       "media": [
         {
           "file": "TAG1.jpeg",
@@ -2864,7 +3147,7 @@ body.gallery-open .floating-whatsapp {
     },
     gifts: {
       "title": "المنتجات والهدايا",
-      "label": "تصوير المنتجات وتقديم تجربة الإهداء بمحتوى بصري.",
+      "label": "إبراز تفاصيل المنتج وتجربة الإهداء، بصور ومحتوى يخدم قرار الشراء.",
       "media": [
         {
           "file": "gif3.png",
@@ -2885,7 +3168,7 @@ body.gallery-open .floating-whatsapp {
     },
     study: {
       "title": "دراسة المحتوى وتنسيقه",
-      "label": "تحليل الأفكار وتنسيق المحتوى لعرض واضح ومتناسق.",
+      "label": "دراسة الأفكار وتنظيمها بصريًا، لتقديم محتوى واضح ومتسق.",
       "media": [
         {
           "file": "tech5.jpeg",
@@ -2916,7 +3199,7 @@ body.gallery-open .floating-whatsapp {
     },
     designs: {
       "title": "التصاميم التسويقية",
-      "label": "تصميم محتوى يوضّح الخدمات والعروض بما يناسب هوية العلامة.",
+      "label": "تحويل الخدمات والعروض إلى تصاميم واضحة تحافظ على هوية العلامة.",
       "media": [
         {
           "file": "pr  is.png",
@@ -2932,7 +3215,7 @@ body.gallery-open .floating-whatsapp {
     },
     videos: {
       "title": "تغطياتي والمحتوى المصور",
-      "label": "تغطيات مصوّرة وتجارب العملاء والنتائج.",
+      "label": "تغطيات وتجارب عملاء ونتائج، بمحتوى يقرّب العلامة من جمهورها.",
       "media": [
         {
           "file": "vid as5.mp4",
@@ -2980,7 +3263,7 @@ body.gallery-open .floating-whatsapp {
     },
     social: {
       "title": "إدارة الحسابات — العيادات والجماليات",
-      "label": "تنسيق محتوى العيادات والجماليات ومتابعة حضورها على المنصات.",
+      "label": "إدارة النشر وتنسيق المحتوى، لحضور متسق يوضّح الخدمات وتجربة العملاء.",
       "media": [
         {
           "file": "mange em.jpeg",
@@ -3026,7 +3309,7 @@ body.gallery-open .floating-whatsapp {
     },
     ads: {
       "title": "الحملات التسويقية — العيادات والجماليات",
-      "label": "تخطيط العروض ومتابعة أداء الحملات عبر تقارير المنصات.",
+      "label": "من صياغة العرض إلى متابعة الحملة، مع قراءة الوصول والتفاعل ونتائج الأداء.",
       "media": [
         {
           "file": "pro1.png",
@@ -3088,7 +3371,7 @@ body.gallery-open .floating-whatsapp {
     },
     presence: {
       "title": "خطة المحتوى ورفع السمعة الرقمية",
-      "label": "تخطيط المحتوى ومتابعة تقييمات الفروع وحضورها الرقمي.",
+      "label": "تنظيم خطة النشر ومتابعة تقييمات الفروع، لبناء حضور رقمي أكثر اتساقًا.",
       "media": [
         {
           "file": "rt2.png",
@@ -3219,6 +3502,7 @@ body.gallery-open .floating-whatsapp {
   }
 
 })();
+
 </script>
 </body>
 </html>
